@@ -1,27 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.scss';
-
-interface Props {
-  onClick: () => void;
-}
-
-export const Provider: React.FC<Props> = React.memo(
-  ({ onClick, children }) => (
-    <button
-      type="button"
-      onClick={onClick}
-    >
-      {children}
-    </button>
-  ),
-);
+import { BoardComponent } from './components/BoardComponent';
+import { Board } from './models/Board';
 
 export const App: React.FC = () => {
+  const [board, setBoard] = useState(new Board());
+
+  function restart() {
+    const newBoard = new Board();
+
+    newBoard.initCells();
+    newBoard.addFigures();
+    setBoard(newBoard);
+  }
+
+  useEffect(() => {
+    restart();
+  }, []);
+
   return (
-    <div className="starter">
-      <Provider onClick={() => ({})}>
-        <TodoList />
-      </Provider>
+    <div className="app">
+      <BoardComponent
+        board={board}
+        setBoard={setBoard}
+      />
     </div>
   );
 };

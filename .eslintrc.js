@@ -8,6 +8,13 @@ module.exports = {
     'react/prop-types': 0,
     'react/self-closing-comp': 0,
     'react/display-name': 0,
+    'no-shadow': 'off',
+    'import/no-cycle': 'off',
+    'react/no-array-index-key': 'off',
+    'no-new': 'off',
+    'no-plusplus': 'off',
+    'no-param-reassign': 'off',
+    'no-mixed-operators': 'off',
 
     // JavaScript
     semi: 0,
